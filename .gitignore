@@ -1,3 +1,22 @@
+# Directories #
 build
+target
+test-output
+
+# Eclipse Files #
+.project
+.classpath
+.settings
+.idea
+.log
+*.json
+
+# Gradle Files #
 .idea
 .gradle
+/target/
+.project
+
+# OS Files #
+.DS_Store
+

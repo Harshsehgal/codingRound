@@ -1,4 +1,5 @@
 import com.sun.javafx.PlatformUtil;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -35,7 +36,8 @@ public class SignInTest {
         }
     }
 
-    private void setDriverPath() {
+    @SuppressWarnings("restriction")
+	private void setDriverPath() {
         if (PlatformUtil.isMac()) {
             System.setProperty("webdriver.chrome.driver", "chromedriver");
         }

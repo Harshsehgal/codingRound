@@ -17,7 +17,6 @@ public class SignInTest {
 
         setDriverPath();
         
-        // For better visibility of browser instance created by WebDriver
         driver.manage().window().maximize();
         
         driver.get("https://www.cleartrip.com/");
@@ -29,14 +28,18 @@ public class SignInTest {
         driver.findElement(By.id("SignIn")).click();
         Reporter.log("Clicked on 'Sign In' button", true);
         
+        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@id='modal_window']")));
+        Reporter.log("Switched to SignIn modal window", true);
+        
         driver.findElement(By.id("signInButton")).click();
         Reporter.log("Clicked on 'Sign in' button from SignIn modal window", true);
         
         String errors1 = driver.findElement(By.id("errors1")).getText();
         Assert.assertTrue(errors1.contains("There were errors in your submission"));
+        
         driver.quit();
     }
-
+    
     private void waitFor(int durationInMilliSeconds) {
         try {
             Thread.sleep(durationInMilliSeconds);

@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
+@SuppressWarnings("restriction")
 public class HotelBookingTest {
 
     WebDriver driver = new ChromeDriver();
@@ -27,15 +28,16 @@ public class HotelBookingTest {
         setDriverPath();
 
         driver.get("https://www.cleartrip.com/");
+        
         hotelLink.click();
 
         localityTextBox.sendKeys("Indiranagar, Bangalore");
 
         new Select(travellerSelection).selectByVisibleText("1 room, 2 adults");
+        
         searchButton.click();
 
         driver.quit();
-
     }
 
     private void setDriverPath() {

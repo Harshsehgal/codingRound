@@ -14,7 +14,6 @@ public class SignInTest {
 
     @Test
     public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
-
         setDriverPath();
         
         driver.manage().window().maximize();
@@ -28,7 +27,7 @@ public class SignInTest {
         driver.findElement(By.id("SignIn")).click();
         Reporter.log("Clicked on 'Sign In' button", true);
         
-        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@id='modal_window']")));
+        driver.switchTo().frame(driver.findElement(By.id("modal_window")));
         Reporter.log("Switched to SignIn modal window", true);
         
         driver.findElement(By.id("signInButton")).click();
@@ -36,6 +35,8 @@ public class SignInTest {
         
         String errors1 = driver.findElement(By.id("errors1")).getText();
         Assert.assertTrue(errors1.contains("There were errors in your submission"));
+        
+        driver.switchTo().defaultContent();
         
         driver.quit();
     }

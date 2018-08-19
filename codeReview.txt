@@ -1,0 +1,11 @@
+Review comments:-
+
+1. Updated .gitignore file to avoid commit irrelevant files
+2. Updated Selenium version to 3.14.0 (latest)
+3. Updated TestNG version to 6.14.3 (latest)
+4. Updated Chrome driver to 2.41 for handling "org.openqa.selenium.WebDriverException: unknown error: call function result missing 'value'" error
+5. Added loggers for complete understanding of test suite execution
+
+Modifications in SignInTest.java file
+1. Added step to maximixe browser for better visibility of browser instance created by WebDriver
+2. Fixed the error in shouldThrowAnErrorIfSignInDetailsAreMissing() function on adding the step to handle frame of SignIn modal window 

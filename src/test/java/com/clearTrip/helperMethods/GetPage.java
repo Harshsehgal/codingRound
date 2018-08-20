@@ -1,6 +1,7 @@
 package com.clearTrip.helperMethods;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Reporter;
@@ -29,7 +30,7 @@ public class GetPage {
 		return driver.findElement(By.linkText(elem));
 	}
 	
-	public WebElement elementByxPath(String xpathExp) {
+	public WebElement elementByXPath(String xpathExp) {
 		return driver.findElement(By.xpath(xpathExp));
 	}
 	
@@ -40,6 +41,15 @@ public class GetPage {
 	public void switchToFrameById(String elem) {
 		driver.switchTo().frame(elem);
 	}
+	
+	public boolean isElementPresent(By by) {
+        try {
+            driver.findElement(by);
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
 	
 	public void logMessage (String message) {
 		Reporter.log(message, true);

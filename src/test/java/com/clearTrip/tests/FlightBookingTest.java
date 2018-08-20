@@ -5,7 +5,6 @@ import com.clearTrip.helperMethods.GetPage;
 import com.clearTrip.helperMethods.SeleniumWait;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -53,7 +52,7 @@ public class FlightBookingTest extends GetPage {
         // Explicit wait for the auto complete options to appear for the Origin
         sw.waitUntilVisibilityOfElement(elementById("ui-id-1"));
         
-        List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
+        List<WebElement> originOptions = elementById("ui-id-1").findElements(By.tagName("li"));
         originOptions.get(0).click();
         logMessage("Selected entered city as Origin");
         
@@ -67,11 +66,11 @@ public class FlightBookingTest extends GetPage {
         sw.waitUntilVisibilityOfElement(elementById("ui-id-2"));
         
         // Select the first item from the destination auto complete list
-        List<WebElement> destinationOptions = driver.findElement(By.id("ui-id-2")).findElements(By.tagName("li"));
+        List<WebElement> destinationOptions = elementById("ui-id-2").findElements(By.tagName("li"));
         destinationOptions.get(0).click();
         logMessage("Selected entered city as Origin");
         
-        elementByxPath("//a[contains(@class,'ui-state-active')]").click();
+        elementByXPath("//a[contains(@class,'ui-state-active')]").click();
         logMessage("Selected date for 'Depart on' field");
         
         elementById("SearchBtn").click();
@@ -83,15 +82,6 @@ public class FlightBookingTest extends GetPage {
         
         quitBrowser();
         logMessage("Quit the Chrome browser instance");
-    }
-    
-    private boolean isElementPresent(By by) {
-        try {
-            driver.findElement(by);
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
     }
 
 }

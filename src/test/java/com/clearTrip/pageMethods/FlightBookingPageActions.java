@@ -37,7 +37,6 @@ public class FlightBookingPageActions extends GetPage {
 	
     public void testThatResultsAppearForAOneWayJourney() {        
         windowMaximise();
-        logMessage("Maximized Chrome browser instance");
         
         launchUrl("https://www.cleartrip.com/");
         logMessage("Navigated to ClearTrip website");
@@ -83,7 +82,6 @@ public class FlightBookingPageActions extends GetPage {
         logMessage("Verified search results are appearing for 'One way' journey");
         
         quitBrowser();
-        logMessage("Quit the Chrome browser instance");
     }
 
 }

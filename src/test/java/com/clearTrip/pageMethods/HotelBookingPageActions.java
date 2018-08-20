@@ -48,7 +48,7 @@ public class HotelBookingPageActions extends GetPage {
 	private WebElement uiSelectedDatePicker;
 
 	@FindBy(id = "ui-datepicker-div")
-	private WebElement uiDatePicket;
+	private WebElement uiDatePicker;
 
 	@FindBy(id = "travellersOnhome")
 	private WebElement travellerSelection;
@@ -60,7 +60,6 @@ public class HotelBookingPageActions extends GetPage {
 		PageFactory.initElements(driver, this);
 				
 		windowMaximise();
-		logMessage("Maximized Chrome browser instance");
 
 		driver.get("https://www.cleartrip.com/");
 		logMessage("Navigated to ClearTrip website");
@@ -78,7 +77,7 @@ public class HotelBookingPageActions extends GetPage {
 		uiSelectedDatePicker.click();
 		logMessage("Selected date for 'Check-in' field");
 
-		sw.waitUntilVisibilityOfElement(uiDatePicket);
+		sw.waitUntilVisibilityOfElement(uiDatePicker);
 		uiSelectedDatePicker.click();
 		logMessage("Selected date for 'Check-out' field");
 
@@ -89,8 +88,7 @@ public class HotelBookingPageActions extends GetPage {
 		searchButton.click();
 		logMessage("Clicked on 'Search hotels' button");
 
-		driver.quit();
-		logMessage("Quit the Chrome browser instance");
+		quitBrowser();
 	}
 
 }

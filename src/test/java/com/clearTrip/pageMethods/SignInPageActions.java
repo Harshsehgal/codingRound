@@ -29,11 +29,8 @@ public class SignInPageActions extends GetPage {
 		super(driver);
 	}
     
-    public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
-    	df.setDriverPath();
-    	
+    public void shouldThrowAnErrorIfSignInDetailsAreMissing() {   	
     	windowMaximise();
-        logMessage("Maximized Chrome browser instance");
         
         launchUrl("https://www.cleartrip.com/");
         logMessage("Navigated to ClearTrip website");
@@ -54,10 +51,8 @@ public class SignInPageActions extends GetPage {
         Assert.assertTrue(errors1.contains("There were errors in your submission"));
         
         switchToDefaultFrame();
-        logMessage("Switched back to default frame");
         
         quitBrowser();
-        logMessage("Quit the Chrome browser instance");
     }
 
 }

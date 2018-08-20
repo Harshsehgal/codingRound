@@ -35,9 +35,7 @@ public class FlightBookingPageActions extends GetPage {
 		super(driver);
 	}
 	
-    public void testThatResultsAppearForAOneWayJourney() {
-        df.setDriverPath();
-        
+    public void testThatResultsAppearForAOneWayJourney() {        
         windowMaximise();
         logMessage("Maximized Chrome browser instance");
         

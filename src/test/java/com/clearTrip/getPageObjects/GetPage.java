@@ -18,6 +18,7 @@ public class GetPage {
 	
 	public void windowMaximise() {
 		driver.manage().window().maximize();
+		logMessage("Maximized Chrome browser instance");
 	}
 	
 	public void launchUrl(String url) {
@@ -38,6 +39,7 @@ public class GetPage {
 	
 	public void switchToDefaultFrame() {
 		driver.switchTo().defaultContent();
+		logMessage("Switched back to default frame");
 	}
 	
 	public void switchToFrameById(String elem) {
@@ -63,6 +65,7 @@ public class GetPage {
 	
 	public void quitBrowser() {
 		driver.quit();
+		logMessage("Quit the Chrome browser instance");
 	}
 	
 }

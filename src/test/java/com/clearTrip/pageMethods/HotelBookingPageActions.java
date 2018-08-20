@@ -58,9 +58,7 @@ public class HotelBookingPageActions extends GetPage {
 	
 	public void shouldBeAbleToSearchForHotels() {
 		PageFactory.initElements(driver, this);
-		
-		df.setDriverPath();
-		
+				
 		windowMaximise();
 		logMessage("Maximized Chrome browser instance");
 

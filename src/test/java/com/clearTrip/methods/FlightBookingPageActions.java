@@ -10,7 +10,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -35,8 +34,7 @@ public class FlightBookingPageActions extends GetPage {
 	public FlightBookingPageActions() {
 		super(driver);
 	}
-
-    @Test
+	
     public void testThatResultsAppearForAOneWayJourney() {
         df.setDriverPath();
         

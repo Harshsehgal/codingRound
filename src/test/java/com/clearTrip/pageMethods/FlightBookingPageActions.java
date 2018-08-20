@@ -35,48 +35,63 @@ public class FlightBookingPageActions extends GetPage {
 		super(driver);
 	}
 	
-    public void testThatResultsAppearForAOneWayJourney() {        
-        windowMaximise();
-        
-        launchUrl("https://www.cleartrip.com/");
+	public void launchApplication() {
+		windowMaximise();
+		launchUrl("https://www.cleartrip.com/");
         logMessage("Navigated to ClearTrip website");
-        
-        elementById("OneWay").click();
+	}
+	
+	public void clickOnOneWayRadioButton() {
+		elementById("OneWay").click();
         logMessage("Clicked on 'One way' radio button");
-
-        elementById("FromTag").clear();
+	}
+	
+	public void enterCityForFlightOrigin() {
+		elementById("FromTag").clear();
         logMessage("Cleared 'From' input field");
         
         elementById("FromTag").sendKeys("Bangalore");
         logMessage("Entered 'Bangalore' in 'From' input field");
-        
-        // Explicit wait for the auto complete options to appear for the Origin
+	}
+	
+	public void selectCityForFlightOrigin() {
+		// Explicit wait for the auto complete options to appear for the Origin
         sw.waitUntilVisibilityOfElement(elementById("ui-id-1"));
         
 		List<WebElement> originOptions = elementsByXPath("//ul[@id='ui-id-1']//li");
         originOptions.get(0).click();
         logMessage("Selected entered city as Origin");
-        
-        elementById("ToTag").clear();
+	}
+	
+	public void enterCityForFlightDestination() {
+		elementById("ToTag").clear();
         logMessage("Cleared 'From' input field");
         
         elementById("ToTag").sendKeys("New Delhi");
         logMessage("Entered 'New Delhi' in 'To' input field");
-
-        // Explicit wait for the auto complete options to appear for the Destination
+	}
+	
+	public void selectCityForFlightDestination() {
+		// Explicit wait for the auto complete options to appear for the Destination
         sw.waitUntilVisibilityOfElement(elementById("ui-id-2"));
         
         // Select the first item from the destination auto complete list
         List<WebElement> destinationOptions = elementsByXPath("//ul[@id='ui-id-2']//li");
         destinationOptions.get(0).click();
-        logMessage("Selected entered city as Origin");
-        
-        elementByXPath("//a[contains(@class,'ui-state-active')]").click();
+        logMessage("Selected entered city as Destination");
+	}
+	
+	public void selectDepartureDate() {
+		elementByXPath("//a[contains(@class,'ui-state-active')]").click();
         logMessage("Selected date for 'Depart on' field");
-        
-        elementById("SearchBtn").click();
+	}
+	
+	public void clickOnSearchFlightsButton() {
+		elementById("SearchBtn").click();
         logMessage("Clicked on 'Search flights' button");
-        
+	}
+	
+    public void verifyResultAppearForProvidedJourneySearch() {        
         // Verify that result appears for the provided journey search
         Assert.assertTrue(isElementPresent(By.className("searchSummary")));
         logMessage("Verified search results are appearing for 'One way' journey");

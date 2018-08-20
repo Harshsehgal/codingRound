@@ -7,16 +7,24 @@ import com.clearTrip.pageMethods.FlightBookingPageActions;
 
 public class FlightBookingTest {
 	
-	FlightBookingPageActions fb;
+	FlightBookingPageActions flightBooking;
 	
 	@BeforeTest
 	public void setup() {
-		fb = new FlightBookingPageActions();
+		flightBooking = new FlightBookingPageActions();
 	}
 	
 	@Test
-	public void TestSignInPage() {
-		fb.testThatResultsAppearForAOneWayJourney();
+	public void Test_Flight_Booking_Page() {
+		flightBooking.launchApplication();
+		flightBooking.clickOnOneWayRadioButton();
+		flightBooking.enterCityForFlightOrigin();
+		flightBooking.selectCityForFlightOrigin();
+		flightBooking.enterCityForFlightDestination();
+		flightBooking.selectCityForFlightDestination();
+		flightBooking.selectDepartureDate();
+		flightBooking.clickOnSearchFlightsButton();
+		flightBooking.verifyResultAppearForProvidedJourneySearch();
 	}
 	
 }

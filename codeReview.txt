@@ -8,4 +8,8 @@ Review comments:-
 
 Modifications in SignInTest.java file
 1. Added step to maximixe browser for better visibility of browser instance created by WebDriver
-2. Fixed the error in shouldThrowAnErrorIfSignInDetailsAreMissing() function on adding the step to handle frame of SignIn modal window 
+2. Fixed the error in shouldThrowAnErrorIfSignInDetailsAreMissing() function on adding the step to handle frame of SignIn modal window
+
+Modifications in HotelBookingTest.java file
+1. Added initElements method to instantiate the elements using PageFactory class
+2. 

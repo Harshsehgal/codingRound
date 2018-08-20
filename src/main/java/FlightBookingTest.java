@@ -1,4 +1,5 @@
 import com.sun.javafx.PlatformUtil;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -10,15 +11,15 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
+@SuppressWarnings("restriction")
 public class FlightBookingTest {
 
     WebDriver driver = new ChromeDriver();
 
-
     @Test
     public void testThatResultsAppearForAOneWayJourney() {
-
         setDriverPath();
+        
         driver.get("https://www.cleartrip.com/");
         waitFor(2000);
         driver.findElement(By.id("OneWay")).click();
@@ -53,9 +54,7 @@ public class FlightBookingTest {
 
         //close the browser
         driver.quit();
-
     }
-
 
     private void waitFor(int durationInMilliSeconds) {
         try {
@@ -64,7 +63,6 @@ public class FlightBookingTest {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
     }
-
 
     private boolean isElementPresent(By by) {
         try {

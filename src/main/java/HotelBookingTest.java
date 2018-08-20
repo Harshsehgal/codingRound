@@ -1,5 +1,6 @@
 import com.sun.javafx.PlatformUtil;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -41,6 +42,7 @@ public class HotelBookingTest {
         
         localityTextBox.sendKeys("Indiranagar, Bangalore");
         Reporter.log("Entered 'Indiranagar, Bangalore' in textbox", true);
+        localityTextBox.sendKeys(Keys.ENTER);
         
         new Select(travellerSelection).selectByVisibleText("1 room, 2 adults");
         Reporter.log("Selected '1 room, 2 adults' option", true);

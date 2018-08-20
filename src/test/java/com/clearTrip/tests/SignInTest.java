@@ -1,67 +1,57 @@
 package com.clearTrip.tests;
 
+import com.clearTrip.helperMethods.DriverFactory;
 import com.clearTrip.helperMethods.GetPage;
-import com.sun.javafx.PlatformUtil;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-@SuppressWarnings("restriction")
 public class SignInTest extends GetPage {
 	
-	public SignInTest (WebDriver driver) {
+	static WebDriver driver = null;
+	static DriverFactory df = null;
+	
+	static {
+		driver = new ChromeDriver();
+		df = new DriverFactory();
+	}
+
+	public SignInTest() {
 		super(driver);
 	}
-	
-    WebDriver driver = new ChromeDriver();
-
+    
     @Test
     public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
-    	setDriverPath();
+    	df.setDriverPath();
+    	
+    	windowMaximise();
+        logMessage("Maximized Chrome browser instance");
         
-        driver.manage().window().maximize();
-        Reporter.log("Maximized Chrome browser instance", true);
+        launchUrl("https://www.cleartrip.com/");
+        logMessage("Navigated to ClearTrip website");
         
-        driver.get("https://www.cleartrip.com/");
-        Reporter.log("Navigated to ClearTrip website", true);
+        elementByLinkText("Your trips").click();
+        logMessage("Clicked on 'Your trips' link");
         
-        driver.findElement(By.linkText("Your trips")).click();
-        Reporter.log("Clicked on 'Your trips' link", true);
+        elementById("SignIn").click();
+        logMessage("Clicked on 'Sign In' button");
         
-        driver.findElement(By.id("SignIn")).click();
-        //elementById("SignIn");
-        Reporter.log("Clicked on 'Sign In' button", true);
+        switchToFrameById("modal_window");
+        logMessage("Switched to SignIn modal window");
         
-        driver.switchTo().frame(driver.findElement(By.id("modal_window")));
-        Reporter.log("Switched to SignIn modal window", true);
+        elementById("signInButton").click();
+        logMessage("Clicked on 'Sign in' button from SignIn modal window");
         
-        driver.findElement(By.id("signInButton")).click();
-        Reporter.log("Clicked on 'Sign in' button from SignIn modal window", true);
-        
-        String errors1 = driver.findElement(By.id("errors1")).getText();
+        String errors1 = elementById("errors1").getText();
         Assert.assertTrue(errors1.contains("There were errors in your submission"));
         
-        driver.switchTo().defaultContent();
+        switchToDefaultFrame();
+        logMessage("Switched back to default frame");
         
-        driver.quit();
-        Reporter.log("Quit the Chrome browser instance", true);
+        quitBrowser();
+        logMessage("Quit the Chrome browser instance");
     }
-
-	private void setDriverPath() {
-        if (PlatformUtil.isMac()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
-        }
-        if (PlatformUtil.isWindows()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        }
-        if (PlatformUtil.isLinux()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
-        }
-    }
-
 
 }

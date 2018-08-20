@@ -28,12 +28,6 @@ public class SignInPageActions extends GetPage {
 	public SignInPageActions() {
 		super(driver);
 	}
-    
-	public void launchApplication() {
-		windowMaximise();
-		launchUrl("https://www.cleartrip.com/");
-        logMessage("Navigated to ClearTrip website");
-	}
 	
 	public void clickOnYourTrips() {
         elementByLinkText("Your trips").click();

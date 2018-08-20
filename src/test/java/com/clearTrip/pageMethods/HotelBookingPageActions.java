@@ -56,12 +56,8 @@ public class HotelBookingPageActions extends GetPage {
 	@FindBy(id = "SearchHotelsButton")
 	private WebElement searchButton;
 	
-	public void launchApplication() {
+	public void initializePageElements() {
 		PageFactory.initElements(driver, this);
-		
-		windowMaximise();
-		launchUrl("https://www.cleartrip.com/");
-        logMessage("Navigated to ClearTrip website");
 	}
 	
 	public void clickOnHotelsLink() {

@@ -21,8 +21,10 @@ public class GetPage {
 		logMessage("Maximized Chrome browser instance");
 	}
 	
-	public void launchUrl(String url) {
-		driver.get(url);
+	public void launchApplication() {
+		windowMaximise();
+		driver.get("https://www.cleartrip.com/");
+		logMessage("Navigated to ClearTrip website");
 	}
 	
 	public WebElement elementById(String elem) {

@@ -16,6 +16,7 @@ public class HotelBookingTest {
 	
 	@Test
 	public void Test_Hotel_Booking_Page() {
+		hotelBooking.initializePageElements();
 		hotelBooking.launchApplication();
 		hotelBooking.clickOnHotelsLink();
 		hotelBooking.enterLocalityDetails();

@@ -35,12 +35,6 @@ public class FlightBookingPageActions extends GetPage {
 		super(driver);
 	}
 	
-	public void launchApplication() {
-		windowMaximise();
-		launchUrl("https://www.cleartrip.com/");
-        logMessage("Navigated to ClearTrip website");
-	}
-	
 	public void clickOnOneWayRadioButton() {
 		elementById("OneWay").click();
         logMessage("Clicked on 'One way' radio button");

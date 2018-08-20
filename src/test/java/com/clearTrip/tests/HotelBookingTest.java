@@ -7,16 +7,23 @@ import com.clearTrip.pageMethods.HotelBookingPageActions;
 
 public class HotelBookingTest {
 	
-	HotelBookingPageActions hb;
+	HotelBookingPageActions hotelBooking;
 	
 	@BeforeTest
 	public void setup() {
-		hb = new HotelBookingPageActions();
+		hotelBooking = new HotelBookingPageActions();
 	}
 	
 	@Test
-	public void TestSignInPage() {
-		hb.shouldBeAbleToSearchForHotels();
+	public void Test_Hotel_Booking_Page() {
+		hotelBooking.launchApplication();
+		hotelBooking.clickOnHotelsLink();
+		hotelBooking.enterLocalityDetails();
+		hotelBooking.selectLocalityFromAutoComplete();
+		hotelBooking.selectCheckInDate();
+		hotelBooking.selectCheckOutDate();
+		hotelBooking.selectNoOfTravellers();
+		hotelBooking.clickOnSearchHotelsButton();
 	}
 	
 }

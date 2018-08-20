@@ -18,17 +18,17 @@ public class HotelBookingPageActions extends GetPage {
 
 	static WebDriver driver = null;
 	static ChromeOptions options = null;
-	static SeleniumWait sw = null;
-	static DriverFactory df = null;
+	static SeleniumWait seleniumWait = null;
+	static DriverFactory driverFactory = null;
 	
 	static {
-		df = new DriverFactory();
+		driverFactory = new DriverFactory();
 		options = new ChromeOptions();
 		options.addArguments("--disable-notifications");
-		df.setDriverPath();
+		driverFactory.setDriverPath();
 		driver = new ChromeDriver(options);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		sw = new SeleniumWait(driver);
+		seleniumWait = new SeleniumWait(driver);
 	}
 
 	public HotelBookingPageActions() {
@@ -56,35 +56,48 @@ public class HotelBookingPageActions extends GetPage {
 	@FindBy(id = "SearchHotelsButton")
 	private WebElement searchButton;
 	
-	public void shouldBeAbleToSearchForHotels() {
+	public void launchApplication() {
 		PageFactory.initElements(driver, this);
-				
+		
 		windowMaximise();
-
-		driver.get("https://www.cleartrip.com/");
-		logMessage("Navigated to ClearTrip website");
-
+		launchUrl("https://www.cleartrip.com/");
+        logMessage("Navigated to ClearTrip website");
+	}
+	
+	public void clickOnHotelsLink() {
 		hotelLink.click();
 		logMessage("Clicked on 'Hotels' link");
-
+	}
+	
+	public void enterLocalityDetails() {
 		localityTextBox.sendKeys("Indiranagar, Bangalore");
 		logMessage("Entered 'Indiranagar, Bangalore' in textbox");
-
-		sw.waitUntilVisibilityOfElement(uiSelectedLocality);
+	}
+	
+	public void selectLocalityFromAutoComplete() {
+		seleniumWait.waitUntilVisibilityOfElement(uiSelectedLocality);
 		uiSelectedLocality.click();
 		logMessage("Selected 'Indiranagar, Bangalore' from autoComplete list");
-
+	}
+	
+	public void selectCheckInDate() {
 		uiSelectedDatePicker.click();
 		logMessage("Selected date for 'Check-in' field");
-
-		sw.waitUntilVisibilityOfElement(uiDatePicker);
+	}
+	
+	public void selectCheckOutDate() {
+		seleniumWait.waitUntilVisibilityOfElement(uiDatePicker);
 		uiSelectedDatePicker.click();
 		logMessage("Selected date for 'Check-out' field");
-
+	}
+	
+	public void selectNoOfTravellers() {
 		new Select(travellerSelection).selectByVisibleText("1 room, 1 adult");
 		logMessage("Selected '1 room, 1 adult' option");
-
-		sw.waitUntilElementToBeClickable(searchButton);
+	}
+	
+	public void clickOnSearchHotelsButton() {
+		seleniumWait.waitUntilElementToBeClickable(searchButton);
 		searchButton.click();
 		logMessage("Clicked on 'Search hotels' button");
 

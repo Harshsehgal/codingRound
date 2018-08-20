@@ -29,11 +29,13 @@ public class SignInPageActions extends GetPage {
 		super(driver);
 	}
     
-	public void clickOnYourTrips() {
+	public void launchApplication() {
 		windowMaximise();
 		launchUrl("https://www.cleartrip.com/");
         logMessage("Navigated to ClearTrip website");
-        
+	}
+	
+	public void clickOnYourTrips() {
         elementByLinkText("Your trips").click();
         logMessage("Clicked on 'Your trips' link");
 	}

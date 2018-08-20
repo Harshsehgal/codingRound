@@ -15,7 +15,8 @@ public class SignInTest {
 	}
 	
 	@Test
-	public void TestSignInPage() {
+	public void Test_Sign_In_Page() {
+		signIn.launchApplication();
 		signIn.clickOnYourTrips();
 		signIn.navigateToSignInModalWindow();
 		signIn.clickOnSignInButton();

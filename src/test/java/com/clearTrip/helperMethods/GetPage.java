@@ -29,6 +29,10 @@ public class GetPage {
 		return driver.findElement(By.linkText(elem));
 	}
 	
+	public WebElement elementByxPath(String xpathExp) {
+		return driver.findElement(By.xpath(xpathExp));
+	}
+	
 	public void switchToDefaultFrame() {
 		driver.switchTo().defaultContent();
 	}

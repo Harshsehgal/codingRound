@@ -16,8 +16,6 @@ import org.testng.annotations.Test;
 public class HotelBookingTest {
 
     WebDriver driver = new ChromeDriver();
-    
-    // Explicit wait i.e., waiting for condition to occur
     WebDriverWait wait = new WebDriverWait(driver, 15);
 
     @FindBy(linkText = "Hotels")
@@ -79,6 +77,14 @@ public class HotelBookingTest {
         
         driver.quit();
         Reporter.log("Quit the Chrome browser instance", true);
+    }
+    
+    private void waitFor(int durationInMilliSeconds) {
+        try {
+            Thread.sleep(durationInMilliSeconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
     }
     
     private void setDriverPath() {

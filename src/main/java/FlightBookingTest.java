@@ -14,51 +14,57 @@ import java.util.List;
 
 @SuppressWarnings("restriction")
 public class FlightBookingTest {
+	
 
-    WebDriver driver = new ChromeDriver();
+	WebDriver driver = new ChromeDriver();
 
     @Test
     public void testThatResultsAppearForAOneWayJourney() {
         setDriverPath();
         
         driver.manage().window().maximize();
-        Reporter.log("Maximize Chrome browser instance", true);
+        Reporter.log("Maximized Chrome browser instance", true);
         
         driver.get("https://www.cleartrip.com/");
         Reporter.log("Navigated to ClearTrip website", true);
         
         driver.findElement(By.id("OneWay")).click();
+        Reporter.log("Clicked on 'One way' radio button", true);
 
         driver.findElement(By.id("FromTag")).clear();
+        Reporter.log("Cleared 'From' input field", true);
         driver.findElement(By.id("FromTag")).sendKeys("Bangalore");
-
-        //wait for the auto complete options to appear for the origin
+        Reporter.log("Entered 'Bangalore' in 'From' input field", true);
         
+        //wait for the auto complete options to appear for the origin
         waitFor(2000);
         List<WebElement> originOptions = driver.findElement(By.id("ui-id-1")).findElements(By.tagName("li"));
         originOptions.get(0).click();
 
-        driver.findElement(By.id("toTag")).clear();
-        driver.findElement(By.id("toTag")).sendKeys("Delhi");
+        driver.findElement(By.id("ToTag")).clear();
+        Reporter.log("Cleared 'From' input field", true);
+        driver.findElement(By.id("ToTag")).sendKeys("Delhi");
+        Reporter.log("Entered 'Delhi' in 'To' input field", true);
 
         //wait for the auto complete options to appear for the destination
-
         waitFor(2000);
         //select the first item from the destination auto complete list
         List<WebElement> destinationOptions = driver.findElement(By.id("ui-id-2")).findElements(By.tagName("li"));
         destinationOptions.get(0).click();
-
-        driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[1]/table/tbody/tr[3]/td[7]/a")).click();
+        
+        driver.findElement(By.xpath("//a[contains(@class,'ui-state-active')]")).click();
+        Reporter.log("Selected date for 'Depart on' field", true);
 
         //all fields filled in. Now click on search
         driver.findElement(By.id("SearchBtn")).click();
-
-        waitFor(5000);
+        Reporter.log("Clicked on 'Search flights' button", true);
+        
         //verify that result appears for the provided journey search
         Assert.assertTrue(isElementPresent(By.className("searchSummary")));
-
-        //close the browser
+        Reporter.log("Verified search results are appearing for 'One way' journey", true);
+        
         driver.quit();
+        Reporter.log("Quit the Chrome browser instance", true);
     }
 
     private void waitFor(int durationInMilliSeconds) {
@@ -78,7 +84,7 @@ public class FlightBookingTest {
         }
     }
 
-    private void setDriverPath() {
+    private void setDriverPath() { 	
         if (PlatformUtil.isMac()) {
             System.setProperty("webdriver.chrome.driver", "chromedriver");
         }

@@ -17,7 +17,7 @@ public class SignInTest {
         setDriverPath();
         
         driver.manage().window().maximize();
-        Reporter.log("Maximize Chrome browser instance", true);
+        Reporter.log("Maximized Chrome browser instance", true);
         
         driver.get("https://www.cleartrip.com/");
         Reporter.log("Navigated to ClearTrip website", true);

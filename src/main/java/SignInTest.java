@@ -39,7 +39,7 @@ public class SignInTest {
         driver.switchTo().defaultContent();
         
         driver.quit();
-        Reporter.log("Quit the browser instance", true);
+        Reporter.log("Quit the Chrome browser instance", true);
     }
     
     private void waitFor(int durationInMilliSeconds) {

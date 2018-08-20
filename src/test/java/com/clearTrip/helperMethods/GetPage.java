@@ -1,5 +1,7 @@
 package com.clearTrip.helperMethods;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -40,6 +42,10 @@ public class GetPage {
 	
 	public void switchToFrameById(String elem) {
 		driver.switchTo().frame(elem);
+	}
+	
+	public List<WebElement> elementsByXPath(String xpathExp) {
+		return driver.findElements(By.xpath(xpathExp));
 	}
 	
 	public boolean isElementPresent(By by) {

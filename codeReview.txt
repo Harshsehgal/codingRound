@@ -13,3 +13,5 @@ Modifications in SignInTest.java file
 Modifications in HotelBookingTest.java file
 1. Added initElements method to instantiate the elements using PageFactory class
 2. 
+
+Modifications in FlightBookingTest.java file

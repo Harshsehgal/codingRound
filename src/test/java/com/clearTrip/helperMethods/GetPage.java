@@ -10,7 +10,7 @@ import org.testng.Reporter;
 
 public class GetPage {
 	
-	WebDriver driver;
+	protected WebDriver driver;
 	
 	public GetPage (WebDriver driver) {
 		this.driver = driver;

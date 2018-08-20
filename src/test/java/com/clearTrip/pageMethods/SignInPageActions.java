@@ -1,7 +1,4 @@
-package com.clearTrip.methods;
-
-import com.clearTrip.helperMethods.DriverFactory;
-import com.clearTrip.helperMethods.GetPage;
+package com.clearTrip.pageMethods;
 
 import java.util.concurrent.TimeUnit;
 
@@ -9,6 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
+
+import com.clearTrip.helperMethods.DriverFactory;
+import com.clearTrip.helperMethods.GetPage;
 
 public class SignInPageActions extends GetPage {
 	

@@ -1,18 +1,21 @@
-Fixed issues in following tests:-
+Fixed issues in following page methods:-
 
-SignInTest.java
+SignInPageActions.java (WebElement + Methods)
 1. Switched to SignIn modal frame for locating 'Sign In' button
 2. Returned back to main window to interact with other WebElements
 
-HotelBookingTest.java
+HotelBookingPageActions.java (WebElement + Methods)
 1. Added initElements method to instantiate the elements using PageFactory class to fix 'NullPointerException'
-2. 
+2. Handled and selected the appropriate option from the list of auto suggestions on entering the locality in textbox area
+3. Added more elements to complete the details (Check-in, Check-out dates) for searching hotels
 
-FlightBookingTest.java
-1. 
-2. 
+FlightBookingPageActions.java (WebElement + Methods)
+1. Handled and selected the appropriate 'Origin' while entering the city in textbox area
+2. Updated the locator of 'Destination' WebElement
+3. Re-factored the locators of Origin & Destination textbox to store the list of options
 
-Refactored Code:-
+
+Generalized Re-factored Code:-
 1. Updated .gitignore file to avoid commit irrelevant files
 2. Updated Selenium version to 3.14.0 (latest) to support latest browser versions
 3. Updated TestNG version to 6.14.3 (latest) for latest features of the same
@@ -21,5 +24,10 @@ Refactored Code:-
 6. Added loggers for complete understanding of test suite execution
 7. Removed different methods (Selenium wait, Assertion methods, etc.) from test class and created new package for them
 
-Design issues with current codebase:-
-1. 
+
+Design issues with current Codebase/framework:-
+1. Main issue - WebElements, methods & test methods where all present in same class which makes the code ZERO reusable, HARD to maintain & UNREADABLE. Hence, not following POM (Page Object Model) approach.
+2. No Separate class file was present for WebElements & page methods which performs operations on these WebElements
+3. Neither any different test class was designed to form the test case and call the methods as per the steps.
+
+NOTE: Newly created framework covers all the flaws mentioned above of previous codebase i.e., the code is MORE readable, EASY to maintain & REUSABLE as well (a POM based structure).

@@ -5,8 +5,9 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
+
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -20,8 +21,12 @@ public class FlightBookingTest {
     public void testThatResultsAppearForAOneWayJourney() {
         setDriverPath();
         
+        driver.manage().window().maximize();
+        Reporter.log("Maximize Chrome browser instance", true);
+        
         driver.get("https://www.cleartrip.com/");
-        waitFor(2000);
+        Reporter.log("Navigated to ClearTrip website", true);
+        
         driver.findElement(By.id("OneWay")).click();
 
         driver.findElement(By.id("FromTag")).clear();

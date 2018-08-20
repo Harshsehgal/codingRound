@@ -48,8 +48,10 @@ public class HotelBookingTest {
         setDriverPath();
         
         driver.manage().window().maximize();
+        Reporter.log("Maximize Chrome browser instance", true);
         
         driver.get("https://www.cleartrip.com/");
+        Reporter.log("Navigated to ClearTrip website", true);
         
         hotelLink.click();
         Reporter.log("Clicked on 'Hotels' link", true);

@@ -1,4 +1,4 @@
-package com.clearTrip.helperMethods;
+package com.clearTrip.getPageObjects;
 
 import com.sun.javafx.PlatformUtil;
 

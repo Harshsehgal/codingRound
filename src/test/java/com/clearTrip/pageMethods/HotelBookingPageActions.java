@@ -1,8 +1,8 @@
 package com.clearTrip.pageMethods;
 
+import com.clearTrip.getPageObjects.DriverFactory;
+import com.clearTrip.getPageObjects.GetPage;
 import com.clearTrip.utils.SeleniumWait;
-import com.clearTrip.helperMethods.DriverFactory;
-import com.clearTrip.helperMethods.GetPage;
 
 import java.util.concurrent.TimeUnit;
 

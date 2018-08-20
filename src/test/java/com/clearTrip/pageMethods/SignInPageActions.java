@@ -7,8 +7,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 
-import com.clearTrip.helperMethods.DriverFactory;
-import com.clearTrip.helperMethods.GetPage;
+import com.clearTrip.getPageObjects.DriverFactory;
+import com.clearTrip.getPageObjects.GetPage;
 
 public class SignInPageActions extends GetPage {
 	

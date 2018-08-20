@@ -1,103 +1,93 @@
 package com.clearTrip.tests;
-import com.sun.javafx.PlatformUtil;
+
+import com.clearTrip.helperMethods.DriverFactory;
+import com.clearTrip.helperMethods.GetPage;
+import com.clearTrip.helperMethods.SeleniumWait;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-@SuppressWarnings("restriction")
-public class HotelBookingTest {
+public class HotelBookingTest extends GetPage {
 
-    WebDriver driver = new ChromeDriver();
-    WebDriverWait wait = new WebDriverWait(driver, 15);
+	static WebDriver driver = null;
+	static SeleniumWait sw = null;
+	static DriverFactory df = null;
+	
+	static {
+		driver = new ChromeDriver();
+		sw = new SeleniumWait(driver);
+		df = new DriverFactory();
+	}
 
-    @FindBy(linkText = "Hotels")
-    private WebElement hotelLink;
+	public HotelBookingTest() {
+		super(driver);
+	}
 
-    @FindBy(id = "Tags")
-    private WebElement localityTextBox;
-    
-    @FindBy(className = "uiSelected")
-    private WebElement uiSelectedLocality;
-    
-    @FindBy(xpath = "//a[contains(@class,'ui-state-active')]")
-    private WebElement uiSelectedDatePicker;
-    
-    @FindBy(id = "ui-datepicker-div")
-    private WebElement uiDatePicket;
-    
-    @FindBy(id = "travellersOnhome")
-    private WebElement travellerSelection;
-    
-    @FindBy(id = "SearchHotelsButton")
-    private WebElement searchButton;
+	@FindBy(linkText = "Hotels")
+	private WebElement hotelLink;
 
-    @Test
-    public void shouldBeAbleToSearchForHotels() {
-    	PageFactory.initElements(driver, this);
-    	
-        setDriverPath();
-        
-        driver.manage().window().maximize();
-        Reporter.log("Maximized Chrome browser instance", true);
-        
-        driver.get("https://www.cleartrip.com/");
-        Reporter.log("Navigated to ClearTrip website", true);
-        
-        hotelLink.click();
-        Reporter.log("Clicked on 'Hotels' link", true);
-        
-        localityTextBox.sendKeys("Indiranagar, Bangalore");
-        Reporter.log("Entered 'Indiranagar, Bangalore' in textbox", true);
-        
-        wait.until(ExpectedConditions.visibilityOf(uiSelectedLocality));
-        uiSelectedLocality.click();
-        Reporter.log("Selected 'Indiranagar, Bangalore' from autoComplete list", true);
-        
-        uiSelectedDatePicker.click();
-        Reporter.log("Selected date for 'Check-in' field", true);
-        
-		wait.until(ExpectedConditions.visibilityOf(uiDatePicket));
-        uiSelectedDatePicker.click();
-        Reporter.log("Selected date for 'Check-out' field", true);
-        
-        new Select(travellerSelection).selectByVisibleText("1 room, 1 adult");
-        Reporter.log("Selected '1 room, 1 adult' option", true);
-        
-        wait.until(ExpectedConditions.elementToBeClickable(searchButton));
-        searchButton.click();
-        Reporter.log("Clicked on 'Search hotels' button", true);
-        
-        driver.quit();
-        Reporter.log("Quit the Chrome browser instance", true);
-    }
-    
-    private void waitFor(int durationInMilliSeconds) {
-        try {
-            Thread.sleep(durationInMilliSeconds);
-        } catch (InterruptedException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
-    }
-    
-    private void setDriverPath() {
-        if (PlatformUtil.isMac()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
-        }
-        if (PlatformUtil.isWindows()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        }
-        if (PlatformUtil.isLinux()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
-        }
-    }
+	@FindBy(id = "Tags")
+	private WebElement localityTextBox;
+
+	@FindBy(className = "uiSelected")
+	private WebElement uiSelectedLocality;
+
+	@FindBy(xpath = "//a[contains(@class,'ui-state-active')]")
+	private WebElement uiSelectedDatePicker;
+
+	@FindBy(id = "ui-datepicker-div")
+	private WebElement uiDatePicket;
+
+	@FindBy(id = "travellersOnhome")
+	private WebElement travellerSelection;
+
+	@FindBy(id = "SearchHotelsButton")
+	private WebElement searchButton;
+
+	@Test
+	public void shouldBeAbleToSearchForHotels() {
+		PageFactory.initElements(driver, this);
+		
+		df.setDriverPath();
+		
+		windowMaximise();
+		logMessage("Maximized Chrome browser instance");
+
+		driver.get("https://www.cleartrip.com/");
+		logMessage("Navigated to ClearTrip website");
+
+		hotelLink.click();
+		logMessage("Clicked on 'Hotels' link");
+
+		localityTextBox.sendKeys("Indiranagar, Bangalore");
+		logMessage("Entered 'Indiranagar, Bangalore' in textbox");
+
+		sw.waitUntilVisibilityOfElement(uiSelectedLocality);
+		uiSelectedLocality.click();
+		logMessage("Selected 'Indiranagar, Bangalore' from autoComplete list");
+
+		uiSelectedDatePicker.click();
+		logMessage("Selected date for 'Check-in' field");
+
+		sw.waitUntilVisibilityOfElement(uiDatePicket);
+		uiSelectedDatePicker.click();
+		logMessage("Selected date for 'Check-out' field");
+
+		new Select(travellerSelection).selectByVisibleText("1 room, 1 adult");
+		logMessage("Selected '1 room, 1 adult' option");
+
+		sw.waitUntilElementToBeClickable(searchButton);
+		searchButton.click();
+		logMessage("Clicked on 'Search hotels' button");
+
+		driver.quit();
+		logMessage("Quit the Chrome browser instance");
+	}
 
 }

@@ -7,9 +7,13 @@ Review comments:-
 5. Added loggers for complete understanding of test suite execution
 
 Modifications in SignInTest.java file
-1. Added step to maximixe browser for better visibility of browser instance created by WebDriver
+1. Added step to maximize browser for better visibility of browser instance created by WebDriver
 2. Fixed the error in shouldThrowAnErrorIfSignInDetailsAreMissing() function on adding the step to handle frame of SignIn modal window
 
 Modifications in HotelBookingTest.java file
 1. Added initElements method to instantiate the elements using PageFactory class
+2. 
+
+Modifications in FlightBookingTest.java file
+1. 
 2. 

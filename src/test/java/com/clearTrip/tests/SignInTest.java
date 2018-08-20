@@ -1,3 +1,6 @@
+package com.clearTrip.tests;
+
+import com.clearTrip.helperMethods.GetPage;
 import com.sun.javafx.PlatformUtil;
 
 import org.openqa.selenium.By;
@@ -8,13 +11,17 @@ import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 @SuppressWarnings("restriction")
-public class SignInTest {
-
+public class SignInTest extends GetPage {
+	
+	public SignInTest (WebDriver driver) {
+		super(driver);
+	}
+	
     WebDriver driver = new ChromeDriver();
 
     @Test
     public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
-        setDriverPath();
+    	setDriverPath();
         
         driver.manage().window().maximize();
         Reporter.log("Maximized Chrome browser instance", true);
@@ -26,6 +33,7 @@ public class SignInTest {
         Reporter.log("Clicked on 'Your trips' link", true);
         
         driver.findElement(By.id("SignIn")).click();
+        //elementById("SignIn");
         Reporter.log("Clicked on 'Sign In' button", true);
         
         driver.switchTo().frame(driver.findElement(By.id("modal_window")));
@@ -41,14 +49,6 @@ public class SignInTest {
         
         driver.quit();
         Reporter.log("Quit the Chrome browser instance", true);
-    }
-    
-    private void waitFor(int durationInMilliSeconds) {
-        try {
-            Thread.sleep(durationInMilliSeconds);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
 	private void setDriverPath() {

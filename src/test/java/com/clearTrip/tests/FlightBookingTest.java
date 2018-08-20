@@ -1,3 +1,4 @@
+package com.clearTrip.tests;
 import com.sun.javafx.PlatformUtil;
 
 import org.openqa.selenium.By;

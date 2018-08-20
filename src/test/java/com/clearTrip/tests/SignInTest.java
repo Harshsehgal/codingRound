@@ -7,16 +7,19 @@ import com.clearTrip.pageMethods.SignInPageActions;
 
 public class SignInTest {
 	
-	SignInPageActions si;
+	SignInPageActions signIn;
 	
 	@BeforeTest
 	public void setup() {
-		si = new SignInPageActions();
+		signIn = new SignInPageActions();
 	}
 	
 	@Test
 	public void TestSignInPage() {
-		si.shouldThrowAnErrorIfSignInDetailsAreMissing();
+		signIn.clickOnYourTrips();
+		signIn.navigateToSignInModalWindow();
+		signIn.clickOnSignInButton();
+		signIn.verifyErrorMsgOnSubmissionDetails();
 	}
 	
 }

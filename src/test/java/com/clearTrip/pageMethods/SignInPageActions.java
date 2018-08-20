@@ -29,26 +29,37 @@ public class SignInPageActions extends GetPage {
 		super(driver);
 	}
     
-    public void shouldThrowAnErrorIfSignInDetailsAreMissing() {   	
-    	windowMaximise();
-        
-        launchUrl("https://www.cleartrip.com/");
+	public void clickOnYourTrips() {
+		windowMaximise();
+		launchUrl("https://www.cleartrip.com/");
         logMessage("Navigated to ClearTrip website");
         
         elementByLinkText("Your trips").click();
         logMessage("Clicked on 'Your trips' link");
-        
-        elementById("SignIn").click();
+	}
+	
+	public void navigateToSignInModalWindow() {
+		elementById("SignIn").click();
         logMessage("Clicked on 'Sign In' button");
-        
-        switchToFrameById("modal_window");
+	}
+	
+	public void clickOnSignInButton( ) {
+		switchToFrameById("modal_window");
         logMessage("Switched to SignIn modal window");
         
         elementById("signInButton").click();
         logMessage("Clicked on 'Sign in' button from SignIn modal window");
         
+        switchToDefaultFrame();
+	}
+	
+    public void verifyErrorMsgOnSubmissionDetails() {   	
+        switchToFrameById("modal_window");
+        logMessage("Switched to SignIn modal window");
+        
         String errors1 = elementById("errors1").getText();
         Assert.assertTrue(errors1.contains("There were errors in your submission"));
+        logMessage("[ASSERTION PASSED]: Verified Error message on submission of blank details");
         
         switchToDefaultFrame();
         
